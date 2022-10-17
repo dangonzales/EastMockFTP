@@ -9,7 +9,7 @@ import org.mockftpserver.fake.filesystem.UnixFakeFileSystem;
 
 public class EasyFTPFiles {
 	private FileSystem fs = new UnixFakeFileSystem();
-	//TODO clean this up, simple methods. Can still overload them
+	
 	public EasyFTPFiles() {
 	}
 	
@@ -19,15 +19,13 @@ public class EasyFTPFiles {
 
 	public void addFile(String path, String contents) {
 		String files[][] = { {path, contents} };
-		this.addFile(files);
+		this.fs.add(new FileEntry(path, contents));
 	}
 	
 	public void addFile(String[][] files_array) {
-		FileEntry files[] = new FileEntry[files_array.length];
 		for(int i = 0; i< files_array.length; i++) {
-			files[i]= new FileEntry(files_array[i][0],files_array[i][1]);
+			this.fs.add(new FileEntry(files_array[i][0],files_array[i][1]));
 		}
-		this.addEntry(files);
 	}
 	
 	public void addDirectory(String path) {
@@ -36,16 +34,8 @@ public class EasyFTPFiles {
 	}
 	
 	public void addDirectory(String[] paths) {
-		DirectoryEntry dirs[] = new DirectoryEntry[paths.length];
 		for(int i = 0; i< paths.length; i++) {
-			dirs[i]= new DirectoryEntry(paths[i]);
-		}
-		this.addEntry(dirs);
-	}
-	
-	private void addEntry(FileSystemEntry[] entries) {
-		for(int i = 0; i< entries.length; i++) {
-			this.fs.add(entries[i]);
+			this.fs.add(new DirectoryEntry(paths[i]));
 		}
 	}
 	
