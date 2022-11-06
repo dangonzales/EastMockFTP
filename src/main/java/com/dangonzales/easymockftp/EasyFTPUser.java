@@ -18,6 +18,23 @@ public class EasyFTPUser {
 		this.accounts.put(username, new UserAccount(username, password, home_dir));
 	}
 	
+	public void addUser(String[][] users)  {
+		int length = users.length;
+		try {
+			for(int i = 0; i< length; i++) {
+				if(length == 3) {
+					this.addUser(users[i][0],users[i][1],users[i][2]);
+				} else {
+					this.addUser(users[i][0],users[i][1]);
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("Malformed user array. Users need at least a user name and password, with home dir optional");
+			System.err.println(e.getMessage());
+		}
+		
+	}
+	
 	public void removeUser(String username) {
 		this.accounts.remove(username);
 	}
