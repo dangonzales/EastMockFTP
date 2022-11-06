@@ -3,7 +3,6 @@ package com.dangonzales.easymockftp;
 import org.mockftpserver.fake.filesystem.DirectoryEntry;
 import org.mockftpserver.fake.filesystem.FileEntry;
 import org.mockftpserver.fake.filesystem.FileSystem;
-import org.mockftpserver.fake.filesystem.FileSystemEntry;
 import org.mockftpserver.fake.filesystem.UnixFakeFileSystem;
 
 
@@ -18,7 +17,6 @@ public class EasyFTPFiles {
 	}
 
 	public void addFile(String path, String contents) {
-		String files[][] = { {path, contents} };
 		this.fs.add(new FileEntry(path, contents));
 	}
 	

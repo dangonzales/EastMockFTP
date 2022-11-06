@@ -3,14 +3,13 @@ package com.dangonzales.easymockftp;
 import java.util.List;
 
 import org.mockftpserver.fake.FakeFtpServer;
-import org.mockftpserver.fake.filesystem.FileSystem;
 
 public class EasyFTPServerFactory {
-	private static FakeFtpServer server = new FakeFtpServer();
+	private static final FakeFtpServer server = new FakeFtpServer();
 	
 	
 	public static void start() throws Exception {
-		if( !(server.getFileSystem() instanceof FileSystem) ) {
+		if(server.getFileSystem() == null) {
 			throw new Exception("FileSystem not set");
 		}
 		//start server

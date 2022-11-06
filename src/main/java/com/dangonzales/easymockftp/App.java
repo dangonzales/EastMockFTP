@@ -1,16 +1,6 @@
 package com.dangonzales.easymockftp;
 
 import java.util.Scanner;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
 
 /**
  * Hello world!
@@ -23,7 +13,7 @@ public class App
     	//Define a port to connect to
     	EasyFTPServerFactory.setPort(60065);
     	
-    	//Lets set up some dummy data for the file system
+    	//Let's set up some dummy data for the file system
     	String[] dirs = {"/test1","/emptydir"};
     	String[][] files = {
     			{"/test1/file1","sample contents"},
@@ -34,7 +24,7 @@ public class App
     	fs.addDirectory(dirs);
     	fs.addFile(files);
     	
-    	//Lets define the users that can connect to the FTP service
+    	//Let's define the users that can connect to the FTP service
     	String[][] users_array = {
     			{"myuser","pass123"},
     			{"anotheruser","pass456"}
@@ -56,7 +46,7 @@ public class App
     	} catch(Exception e) {
     		System.err.println(e.getMessage());
     	} finally {
-    		//lets clean up
+    		//let's clean up
     		EasyFTPServerFactory.stop();
     		scanner.close();
     	}
