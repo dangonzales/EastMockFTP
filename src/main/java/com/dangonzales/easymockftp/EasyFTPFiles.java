@@ -7,7 +7,7 @@ import org.mockftpserver.fake.filesystem.UnixFakeFileSystem;
 
 
 public class EasyFTPFiles {
-	private FileSystem fs = new UnixFakeFileSystem();
+	private final FileSystem fs = new UnixFakeFileSystem();
 	
 	public EasyFTPFiles() {
 	}
@@ -21,19 +21,19 @@ public class EasyFTPFiles {
 	}
 	
 	public void addFile(String[][] files_array) {
-		for(int i = 0; i< files_array.length; i++) {
-			this.fs.add(new FileEntry(files_array[i][0],files_array[i][1]));
+		for (String[] strings : files_array) {
+			this.fs.add(new FileEntry(strings[0], strings[1]));
 		}
 	}
 	
 	public void addDirectory(String path) {
-		String dirs[] = { path };
+		String[] dirs = { path };
 		this.addDirectory(dirs);
 	}
 	
 	public void addDirectory(String[] paths) {
-		for(int i = 0; i< paths.length; i++) {
-			this.fs.add(new DirectoryEntry(paths[i]));
+		for (String path : paths) {
+			this.fs.add(new DirectoryEntry(path));
 		}
 	}
 	
@@ -42,8 +42,8 @@ public class EasyFTPFiles {
 	}
 	
 	public void removeEntry(String[] paths) {
-		for(int i = 0; i< paths.length; i++) {
-			this.fs.delete(paths[i]);
+		for (String path : paths) {
+			this.fs.delete(path);
 		}
 	}
 	

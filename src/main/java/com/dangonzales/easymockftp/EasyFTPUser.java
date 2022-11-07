@@ -6,7 +6,7 @@ import java.util.HashMap;
 import org.mockftpserver.fake.UserAccount;
 
 public class EasyFTPUser {
-	HashMap<String, UserAccount> accounts = new HashMap<>();
+	private final HashMap<String, UserAccount> accounts = new HashMap<>();
 	public EasyFTPUser() {
 	}
 	
@@ -19,13 +19,12 @@ public class EasyFTPUser {
 	}
 	
 	public void addUser(String[][] users)  {
-		int length = users.length;
 		try {
-			for(int i = 0; i< length; i++) {
-				if(length == 3) {
-					this.addUser(users[i][0],users[i][1],users[i][2]);
+			for (String[] user : users) {
+				if (user.length == 3) {
+					this.addUser(user[0], user[1], user[2]);
 				} else {
-					this.addUser(users[i][0],users[i][1]);
+					this.addUser(user[0], user[1]);
 				}
 			}
 		} catch (Exception e) {
@@ -40,7 +39,7 @@ public class EasyFTPUser {
 	}
 	
 	public ArrayList<UserAccount> getUserAccounts(){
-		return new ArrayList<UserAccount>(this.accounts.values());
+		return new ArrayList<>(this.accounts.values());
 	}
 
 }

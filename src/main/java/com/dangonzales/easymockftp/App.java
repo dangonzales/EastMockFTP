@@ -37,19 +37,17 @@ public class App
     	EasyFTPServerFactory.setFileSystem(fs);
     	
     	//Server will run until we interrupt it with input
-    	Scanner scanner = new Scanner(System.in);
-    	try {
-	    	EasyFTPServerFactory.start();
-	    	System.out.println("Server started successfully");
-	    	System.out.println("Press \"ENTER\" to terminate the server");
-	    	scanner.nextLine();
-    	} catch(Exception e) {
-    		System.err.println(e.getMessage());
-    	} finally {
-    		//let's clean up
-    		EasyFTPServerFactory.stop();
-    		scanner.close();
-    	}
+		try (Scanner scanner = new Scanner(System.in)) {
+			EasyFTPServerFactory.start();
+			System.out.println("Server started successfully");
+			System.out.println("Press \"ENTER\" to terminate the server");
+			scanner.nextLine();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			//let's clean up
+			EasyFTPServerFactory.stop();
+		}
     }
     
 }
