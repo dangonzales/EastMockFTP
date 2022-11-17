@@ -3,11 +3,15 @@ package com.dangonzales.easymockftp;
 import java.util.Scanner;
 
 /**
- * Hello world!
+ * An example of how to start/stop the server.
  *
  */
 public class App 
 {
+	/**
+	 *
+	 * @param args cli args [NYI]
+	 */
     public static void main( String[] args )
     {
     	//Define a port to connect to
